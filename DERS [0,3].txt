@@ -1,0 +1,129 @@
+Karakter Kaçış Dizileri ve Düz Metin Dizeleri
+
+Değişmez değer dizesine sekme \t, yeni satır \n veya çift tırnak işareti \" gibi bir özel karakter eklemeniz gerektiğinde karakter kaçış dizilerini kullanın.
+
+Diğer tüm senaryolarda ters eğik çizgi kullanmanız gerektiğinde, ters eğik çizgi \\ için bir kaçış karakteri kullanın.
+
+Dizedeki @ tüm boşluk biçimlendirmesini ve ters eğik çizgi karakterlerini tutan bir düz metin dizesi değişmez değeri oluşturmak için yönergesini kullanın.
+
+Bir dizedeki Unicode karakterlerini (UTF-16) göstermek için \u ve dört karakterli kodu kullanın.
+
+Unicode karakterleri, uygulamaya bağlı olarak düzgün şekilde yazdırılmayabilir.
+
+
+Console.WriteLine("Generating invoices for customer \"ABC Corp\" ...\n");
+Console.WriteLine("Invoice: 1021\t\tComplete!");
+Console.WriteLine("Invoice: 1022\t\tComplete!");
+Console.WriteLine("\nOutput Directory:\t");
+Console.Write(@"c:\invoices");
+
+// To generate Japanese invoices:
+// Nihon no seikyū-sho o seisei suru ni wa:
+
+
+Console.Write("\n\n\u65e5\u672c\u306e\u8acb\u6c42\u66f8\u3092\u751f\u6210\u3059\u308b\u306b\u306f\uff1a\n\t");
+Console.WriteLine(@"c:\invoices\app.exe -j");
+
+
+
+UTF-16 ise birer karakter kodlamasıdır.Unicode dünyadaki alfabelerde bulunan yüzbinden fazla karakteri barındırır
+
+
+
+Dize birleştirme nedir?
+
+Dize birleştirme, iki veya daha fazla değeri yeni bir değerde birleştirmeye yönelik “programcının konuşma şeklidir”. Eklemeden farklı olarak, ikinci değer, birinci değerin sonuna eklenir ve bu şekilde devam eder. Aşağıdaki alıştırmada, değerleri birleştirmek için kod yazacaksınız.
+
+string firstName = "Bob";
+string greeting = "Hello";
+string message = greeting + " " + firstName + "!";
+Console.WriteLine(message);
+
+ama
+
+string firstName = "Bob";
+string greeting = "Hello";
+Console.WriteLine(greeting + " " + firstName + "!");
+
+Özet
+Bu alıştırmadan çıkarmanız gereken başlıca fikirler şunlardır:
+
+Dize birleştirme, küçük değişmez değer ve değişken dizelerini tek bir dizede birleştirmenize olanak sağlar.
+Eklemek, okunabilirliği artırmıyorsa, ara değişkenler oluşturmaktan kaçının.
+
+Dize ilişkilendirme nedir?
+
+
+Dize ilişkilendirme, bir “şablon” ve bir veya daha fazla ilişkilendirme ifadesi kullanarak birden çok değeri tek bir değişmez değer dizesinde birleştirir. İlişkilendirme ifadesi, açılış ve kapanış küme ayracı simgesi { } içine alınmış bir değişkendir. Değişmez değer dizesi, başına $ karakteri geldiğinde şablon olur.
+
+string message = greeting + " " + firstName + "!";
+Bunun yerine şu daha kısa kod satırını yazabilirsiniz:
+
+C#
+
+Kopyala
+string message = $"{greeting} {firstName}!";
+
+
+
+Dize ilişkilendirmesi, bazı durumlarda gerekli karakter sayısını azaltarak dize birleştirmesine yönelik bir iyileştirme sağlar.
+Her birinin simgelerini birleştirip bunu dize şablonu için önek olarak kullanarak dize ilişkilendirmesi ve düz metin değişmez değerlerini birleştirebilirsiniz.
+
+
+SINAMA
+
+zorunlu kod
+
+string projectName = "ACME";
+
+string russianMessage = "\u041f\u043e\u0441\u043c\u043e\u0442\u0440\u0435\u0442\u044c \u0440\u0443\u0441\u0441\u043a\u0438\u0439 \u0432\u044b\u0432\u043e\u0434";
+
+ŞART
+
+Yalnızca Console.WriteLine() veya Console.Write() yöntemini iki defa kullanabilirsiniz.
+
+ÇIKTI 
+
+View English output:
+		c:\Exercise\ACME\data.txt
+
+Посмотреть русский вывод:
+		c:\Exercise\ACME\ru-RU\data.txt
+
+string projectName = "ACME";
+string englishLocation = $@"c:\Exercise\{projectName}\data.txt";
+Console.WriteLine($"View English output:\n\t\t{englishLocation}\n");
+            
+string russianMessage = "\u041f\u043e\u0441\u043c\u043e\u0442\u0440\u0435\u0442\u044c \u0440\u0443\u0441\u0441\u043a\u0438\u0439 \u0432\u044b\u0432\u043e\u0434";
+string russianLocation = $@"c:\Exercise\{projectName}\ru-RU\data.txt";
+Console.WriteLine($"{russianMessage}:\n\t\t{russianLocation}\n");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
