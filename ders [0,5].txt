@@ -1,0 +1,88 @@
+C# dilinde sayılarla temel işlemleri gerçekleştirme
+
+Sayısal verilerde temel matematik işlemleri gerçekleştirmek için kullanılan işleçleri ve teknikleri öğrenin.
+
+Öğrenme hedefleri
+Sayısal değerler üzerinde matematik işlemleri gerçekleştirme.
+Dizeler ve sayısal değerler arasındaki örtük tür dönüştürmesini gözlemleyin.
+Bir veri türünü geçici olarak başka bir veri türüne dönüştürün.
+
+1. Adım: İki sayısal değeri toplayın
+İki sayıyı toplamak için + sembolü olan toplama işlecini kullanacağız. Evet, dize birleştirme için kullandığınız aynı artı simgesi aynı zamanda toplama için kullanacağınız simgedir + . Bir simgenin birden çok amaçla yeniden kullanılması bazen "işleci aşırı yükleme" olarak adlandırılır ve sıklıkla C# dilinde gerçekleşir.
+
+string firstName = "Bob";
+int widgetsSold = 7;
+Console.WriteLine(firstName + " sold " + widgetsSold + 7 + " widgets.");
+
+string firstName = "Bob";
+int widgetsSold = 7;
+Console.WriteLine(firstName + " sold " + (widgetsSold + 7) + " widgets.");
+
+
+
+ -- Int'lerle toplama, çıkarma, çarpma ve bölme gerçekleştirmek için kod yazma
+
+int sum = 7 + 5;
+int difference = 7 - 5;
+int product = 7 * 5;
+int quotient = 7 / 5;
+
+Console.WriteLine("Sum: " + sum);
+Console.WriteLine("Difference: " + difference);
+Console.WriteLine("Product: " + product);
+Console.WriteLine("Quotient: " + quotient);
+
+
+--Sabit ondalık verileri kullanarak bölme gerçekleştirmek için kod ekleme
+Bölmenin düzgün çalıştığını görmek için ondalık ayırıcıdan sonra kesirli basamakları destekleyen bir veri türü (gibi decimal) kullanmalıyız.
+
+decimal decimalQuotient = 7.0m / 5;
+Console.WriteLine("Decimal quotient: " + decimalQuotient);
+
+
+ --Tamsayılarla (int) bölme işleminden kalanı belirlemek için kod yazın
+Kalan işleci %, int bölme işleminin kalanını belirtir. Bu işleçten asıl öğrendiğiniz şey, bir sayanın başka bir numara tarafından bölünerek bölünemeyeceğidir.
+
+Console.WriteLine("Modulus of 200 / 5 : " + (200 % 5));
+
+
+--İşlemlerin Sırası
+Matematikte, İngilizce PEMDAS kısaltması öğrencilerin birden fazla işlemin çözüm sırasını hatırlamalarına yardımcı olmak için kullanılır. Bu sıra şöyledir:
+
+Parentheses (parantez içinde ne varsa önce gerçekleştirilir)
+Exponents/Üstler
+Multiplication/Çarpma ve Division/Bölme (soldan sağa)
+Addition/Toplama ve Substraction/Çıkarma (soldan sağa)
+
+int value1 = 3 + 4 * 5;
+int value2 = (3 + 4) * 5;
+Console.WriteLine(value1);
+Console.WriteLine(value2);
+
+Artırma ve azaltma
+Özellikle birden çok veri öğesini barındıran bir veri yapısıyla etkileşim kuran herhangi bir döngü mantığı veya koduyla çalışırken, sık sık bir değeri artırmanız ve azaltmanız gerekir.
+
+int value = 0;
+value = value + 5;
+value += 5;
+
+-=, , *=, ++ve -- gibi +=işleçler, sonucu değişkene atamaya ek olarak bazı işlemleri bir arada kullandıklarından bileşik atama işleçleri olarak bilinir
+
+Artırma ve azaltma işleçlerini konumlandırma
+ÇOK ÖNEMLİ !!!!!
+int value = 1;
+value++;
+Console.WriteLine("First: " + value);
+Console.WriteLine("Second: " + value++);
+Console.WriteLine("Third: " + value);
+Console.WriteLine("Fourth: " + (++value));
+
+ÖRNEK
+sıcaklığı Fahrenhayt derecesinden Santigrat derecesine dönüştürmek için bir formül kullanan kod
+
+int fahrenheit = 94;
+decimal celsius = (fahrenheit - 32m) * (5m / 9m);
+Console.WriteLine("The temperature is " + celsius + " Celsius.");
+
+
+
