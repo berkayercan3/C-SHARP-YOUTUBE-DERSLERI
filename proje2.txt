@@ -1,0 +1,25 @@
+Öğrencilerin genel Not Ortalamasını hesaplamaya yardımcı olacak bir Öğrenci GPA Hesaplayıcısı geliştiriyorsunuz. Uygulamanız için parametreler şunlardır:
+
+Size öğrencinin adı ve sınıf bilgileri verilir.
+Her sınıfın bir adı, öğrencinin notu ve o dersin kredi saat sayısı vardır.
+Başvurunuzun, belirli bir öğrencinin genel not ortalamasını hesaplamak için temel matematik işlemlerini gerçekleştirmesi gerekir.
+Uygulamanızın öğrencinin adını, sınıf bilgilerini ve not ortalamasını çıktılaması/göstermesi gerekir.
+
+GPA'yı hesaplamak için:
+
+Bir dersin not değerini o dersin kredi saat sayısı ile çarpın.
+Bunu her kurs için yapın, ardından bu sonuçları birlikte toplayın.
+Ortaya çıkan toplamı, toplam kredi saati sayısına bölün.
+
+Çıktı
+
+Student: berkay ercan
+
+Course            grade   Credit	
+English       	  4       3
+Algebra        	  3       3
+Biology         	  3       4
+Computer Science I  3       4
+Psychology          4       3
+
+Final GPA:          3.35
