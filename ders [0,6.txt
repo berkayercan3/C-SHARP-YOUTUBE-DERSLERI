@@ -1,0 +1,89 @@
+If deyimini kullanma
+
+En yaygın kullanılan dallanma deyimi, if deyimidir. if deyimi, parantez içine alınmış bir Boole ifadesini kullanır. İfade true ise, deyiminden if sonraki kod yürütülür. İfade false ise, deyiminden if sonraki kod atlanır.
+
+Üç altı taraflı zar atmayı simüle etmek için yöntemini kullanacağız Random.Next() . Puanı hesaplamak için değerleri değerlendireceğiz. Puan rastgele toplamdan büyükse kullanıcıya kazanan bir ileti görüntüleriz. Aksi takdirde, kullanıcıya kaybetme iletisi görüntüleriz.
+
+-Attığınız iki zar aynı değerle sonuçlanırsa çifte zar attığınız için ekstra iki puan kazanırsınız.
+-Attığınız üç zarın tümü de aynı değerle sonuçlanırsa üçlü zar attığınız için ekstra altı puan kazanırsınız.
+-Attığınız üç zarın toplamı artı ekstra puanlar 15 veya daha büyük olursa oyunu kazanırsınız. Aksi takdirde kaybedersiniz.
+
+adim1
+
+Random dice = new Random(); // system.Random sinifi olusturduk
+
+int roll1 = dice.Next(1, 7);  //Random.next yontem
+int roll2 = dice.Next(1, 7);
+int roll3 = dice.Next(1, 7);
+
+int total = roll1 + roll2 + roll3;
+
+Console.WriteLine($"Dice roll: {roll1} + {roll2} + {roll3} = {total}");
+
+adim 2 
+
+if (total > 14)
+{
+    Console.WriteLine("You win!");
+}
+
+if (total < 15)
+{
+    Console.WriteLine("Sorry, you lose.");
+}
+
+if deyimi üç kısımdan oluşur:
+
+if anahtar sözcüğü.
+Parantezler ()arasında Boole ifadesi.
+Küme ayraçları { }tarafından tanımlanan bir kod 
+
+
+adim 3 
+
+Çifte zarla kazanılan ekstra puanı uygulamak için başka bir if deyimi ekleyin
+Şimdi yeni bir kural uygulayalım: "Atmış olduğunuz iki zar aynı değerle sonuçlanırsa, çift atarak iki bonus puan alırsınız"
+
+if ((roll1 == roll2) || (roll2 == roll3) || (roll1 == roll3))  // || veya anlamina gelir, == esitse anlamina gelir 
+{
+    Console.WriteLine("You rolled doubles! +2 bonus to total!");
+    total += 2;
+}
+
+adim4
+
+Üçlü zarla kazanılan ekstra puanı uygulamak için başka bir if deyimi ekleyin
+
+if ((roll1 == roll2) && (roll2 == roll3)) / && ve anlamina gelir
+{
+    Console.WriteLine("You rolled triples! +6 bonus to total!");
+    total += 6;
+}
+
+
+
+Boole ifadesi nedir?
+
+Boole ifadesi, true veya falseşeklinde bir Boole değeri döndüren herhangi bir koddur.
+
+string message = "The quick brown fox jumps over the lazy dog.";
+bool result = message.Contains("dog");
+Console.WriteLine(result);
+
+if (message.Contains("fox"))
+{
+    Console.WriteLine("What does the fox say?");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
