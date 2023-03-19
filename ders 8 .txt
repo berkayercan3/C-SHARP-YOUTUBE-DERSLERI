@@ -1,0 +1,99 @@
+Dizi nedir?
+
+Dizi, tek bir değişken adıyla erişilebilen tek tek veri öğelerinden oluşturulmuş bir kümedir. Dizideki her öğeye erişmek için sıfır tabanlı bir sayısal dizin kullanırsınız. Sizin de göreceğiniz gibi, diziler ortak bir amacı veya özellikleri paylaşan benzer verileri daha kolay işlemek amacıyla tek bir veri yapısında toplamamıza olanak tanır.
+
+string[] fraudulentOrderIDs = new string[3];
+
+İlk köşeli ayraç kümesinin [] yalnızca derleyiciye fraudulentOrderIDs adlı değişkenin bir dizi olacağını bildirdiğine ama ikinci köşeli ayraç kümesinin [3] dizide tutulacak öğe sayısını içerdiğine dikkat edin.
+
+2. Adım - Dizideki öğelere değer atama
+
+string[] fraudulentOrderIDs = new string[3];
+
+fraudulentOrderIDs[0] = "A123";
+fraudulentOrderIDs[1] = "B456";
+fraudulentOrderIDs[2] = "C789";
+
+3. Adım - Dizi dışında kalan bir dizin kullanmayı deneme
+
+dizideki her öğeye sıfırdan başlayarak erişiyoruz. Dolayısıyla dizideki ikinci öğeye erişmek için 1 dizinini kullanıyoruz.
+
+fraudulentOrderIDs[3] = "D000";
+
+4. Adım - Dizideki değerleri alma
+
+Console.WriteLine($"First: {fraudulentOrderIDs[0]}");
+Console.WriteLine($"Second: {fraudulentOrderIDs[1]}");
+Console.WriteLine($"Third: {fraudulentOrderIDs[2]}");
+
+6. Adım - Diziyi başlatma
+
+string[] fraudulentOrderIDs = { "A123", "B456", "C789" };
+
+Dizinin Boyutunu Alma
+
+Dizinin nasıl oluşturulduğuna bağlı olarak bir dizide kaç öğe bulunduğunu önceden bilmiyor olabilirsiniz. Dizinin boyutunu saptamak için Length özelliğini kullanabilirsiniz.
+
+Özet
+Dizilerle çalışırken hatırlamanız gereken en önemli noktalar şunlardır.
+
+-Dizi, birbiriyle ilgili veri öğelerini tutan özel bir değişkendir.
+-Dizi değişkeni bildiriminin temel biçimini ezberlemeniz gerekir.
+-Değerlerini almak için dizinin her öğesine köşeli ayraç içinde sıfır tabanlı bir dizin kullanarak erişirsiniz.
+-Dizi sınırları dışındaki bir dizine erişmeye çalışırsanız çalışma zamanı özel durumu alırsınız.
+-Length özelliği size dizi içindeki öğelerin sayısını program aracılığıyla saptamak için bir yol sağlar.
+
+
+Dizide foreach kullanarak döngü yapma
+
+Foreach deyimi dizideki her öğe için döngüler yapar; her döngüde bildiriminin altındaki kod bloğunu çalıştırır ve geçici değişkenin değerini geçerli döngünün temsil ettiği dizi değeriyle değiştirir.
+
+string[] names = { "Bob", "Conrad", "Grant" };
+foreach (string name in names)
+{
+    Console.WriteLine(name);
+}
+
+2. Adım - Dizide yineleme yapmak için foreach deyimini ekleme
+
+int[] inventory = { 200, 450, 700, 175, 250 };
+
+foreach (int items in inventory)
+{
+
+}
+
+3. Adım - Dizideki her öğenin değerini toplamak için bir değişken ekleme
+
+int[] inventory = { 200, 450, 700, 175, 250 };
+int sum = 0;
+foreach (int items in inventory)
+{
+    sum += items;
+}
+
+Console.WriteLine($"We have {sum} items in inventory.");
+
+4. adim 
+
+int[] inventory = { 200, 450, 700, 175, 250 };
+int sum = 0;
+int bin = 0;
+foreach (int items in inventory)
+{
+    sum += items;
+    bin++;
+    Console.WriteLine($"Bin {bin} = {items} items (Running total: {sum})");
+}
+Console.WriteLine($"We have {sum} items in inventory.");
+
+
+
+
+
+
+
+
+
+
+
