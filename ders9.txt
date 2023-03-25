@@ -1,0 +1,114 @@
+Boole ifadeleri kararlar almak icin boole ifadelerini degerlendirme
+
+"Karar mantığı" ve "dallanma mantığı" terimleri, bir ifadenin değerlendirmesine göre yürütme yolundaki değişikliği açıklamak için programcıların kullandığı terimlerdir. Örneğin, kullanıcı girişini değerlendiren kod yazabiliriz. Kullanıcının girdiği değer, "a" dize değerine eşitse bir kod bloğu yürütün. Kullanıcının girdiği değer, "b" dize değerine eşitse farklı bir kod bloğu yürütün. Burada, kullanıcı girişine göre uygulamamızın yürütme yolunu değiştiriyoruz. Programcıların "dallanma" ve "karar" terimleri bu anlama gelir.
+
+Eşitliği ve eşitsizliği değerlendirme
+
+Çoğu zaman, iki değerin eşit olup olmadığını kontrol etmek istersiniz. Eşitliği değerlendirmek için iki değer arasındaki eşitlik işlecini == kullanabilirsiniz. Eşitlik işlecinin herhangi bir tarafındaki iki değer eşdeğerse ifade true değerini döndürür. Aksi takdirde false değerini döndürür.
+
+== esit mi anlaminda kullanilir
+!= esit degil mi anlamina gelir
+
+Console.WriteLine("a" == "a");  //true
+Console.WriteLine("a" == "A"); //false
+Console.WriteLine(1 == 2);     //false
+Console.WriteLine("a" != "a");
+Console.WriteLine("a" != "A");
+Console.WriteLine(1 != 2);
+string myValue = "a";
+Console.WriteLine(myValue != "a");
+string myValue = "a";
+Console.WriteLine(myValue == "a") //true
+
+adım
+
+Console.WriteLine("a" == "a ");
+Burada, dizenin sonuna boş bir alan ekleyeceğiz. Bu da false değerini verir.
+
+bir dize karşılaştırmamız ve bunun eşit olmasını istiyorsak
+
+string value1 = " a";
+string value2 = "A ";
+Console.WriteLine(value1.Trim().ToLower() == value2.Trim().ToLower());
+
+.Trim() yöntemi aradaki boşlukarı yok eder
+.ToLower() yöntemi ise büyük harf 
+
+Karşılaştırmaları değerlendirme
+
+-Büyüktür >
+-Küçüktür <
+-Büyüktür veya eşittir >=
+-Küçüktür veya eşittir <=
+
+Console.WriteLine(1 > 2);
+Console.WriteLine(1 <= 1);
+
+Mantıksal olumsuzlama nedir?
+
+"Logical Olumsuzlama" terimi, ! işlecini ifade eder. Bazı kişiler bunu "değil işleci" olarak adlandırabilir. İfadenin yanlış olduğundan emin olmaya yönelik yöntem çağrısı gibi bir koşullu ifadenin önüne ! işlecini ekleme.
+
+Bu fikirler arasındaki bağlantıları öğrenmenize yardımcı olmak için aşağıdaki iki kod satırı da aynı şeyi yapar. İkinci satır daha kompakttır.
+
+Console.WriteLine(pangram.Contains("fox") == false);
+Console.WriteLine(!pangram.Contains("fox"));
+
+string pangram = "The quick brown fox jumps over the lazy dog.";
+Console.WriteLine(!pangram.Contains("fox"));
+Console.WriteLine(!pangram.Contains("cow"));
+
+KOSULLU İŞLEÇ
+
+Bir müşterinin satın alma işleminin promosyon indirimine uygun olup olmadığını hızla belirlemeniz gerektiğini varsayalım. Satış tutarı 1000’den büyükse satın alma tutarına 100 dolar indirim uygulayın. Tutar 1000 veya daha düşükse satışa yalnızca 50 dolar indirim uygulayın.
+
+Bu iş kuralını ifade etmek için if ... elseif ... else dallanma yapısını kullanabiliriz, ancak promosyon indirimini uygulamak için koşullu işleci de seçebiliriz. Koşullu işleç, birkaç kod satırını kaydeden ve kodun amacını daha net hale getirebilen kompakt bir biçimi kullanır.
+
+Genellikle üçüncül koşullu işleç olarak bilinen koşullu işleç?: bir Boole ifadesini değerlendirir ve Boole ifadesinin true veya false olarak değerlendirilip değerlendirilmediğine bağlı olarak iki ifadeden birini değerlendirmenin sonucunu döndürür.
+
+Temel form şudur:
+
+<bu durumu değerlendirin> ? <koşul doğruysa bu değeri döndürün> : <koşul yanlışsa bu değeri döndürün>
+
+int saleAmount = 1001;
+
+int discount = saleAmount > 1000 ? 100 : 50;
+
+Console.WriteLine($"Discount: {discount}");
+
+daha kisa hali ise : Console.WriteLine($"Discount: {(saleAmount > 1000 ? 100 : 50)}");
+
+if(saleAmount>1000)
+{
+	Console.WriteLine(true);
+}
+else
+{
+	Console.WriteLine(False);
+}
+
+Ornek
+
+YAZI MI TURA MI
+Değer oluşturmak için Random sınıfını kullanın. Değere göre, heads veya tails değerini görüntülemek için koşullu işleci kullanın.
+Sonucun yazı veya tura olması ihtimali %50 olmalıdır.
+İstenen sonucu üç veya daha az kod satırında gerçekleştirebilmelisiniz.
+
+//olasi cozum
+Random coin = new Random();
+int flip = coin.Next(0, 2);
+Console.WriteLine((flip == 0) ? "heads" : "tails");
+
+//sikistirilmis olasi cozum
+Random coin = new Random();
+Console.WriteLine((coin.Next(0, 2) == 0) ? "heads" : "tails");
+
+
+
+
+
+
+
+
+
+
+
