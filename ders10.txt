@@ -1,0 +1,222 @@
+C# dilinde kod bloklarını kullanarak değişken kapsamını ve mantığını denetleme
+
+Kod blokları değişken kapsamı bildirimini etkiler
+Değişken kapsamı, uygulamanızda değişkenin kodun diğer bölümlerine görünürlüğüdür. Yerel kapsama sahip bir değişkene yalnızca içinde tanımlandığı kod bloğunun içinden erişilebilir. Kod bloğunun dışında değişkene erişmeye çalışırsanız derleyici hatası alırsınız.
+
+1. ADIM
+
+kod bloğu dışındaki değişkene erişmeye çalışmak
+
+if deyimi kod bloğunun altına aşağıdaki kod satırını ekleyin
+
+string isim = "Berkay";
+if (isim == "Berkay")
+{
+	string soyisim = "Ercan";
+	Console.WriteLine($"{isim}");
+}
+Console.WriteLine($"{soyisim}");
+Console.ReadLine();
+
+Sorun bir kod bloğu içinde tanımlanan değişkenin yalnızca o kod bloğu içinde erişilebilir (veya görünür) olmasıdır. Değişkene içinde tanımlandığı kod bloğunun dışında erişilemez.
+
+3. Adım
+
+namespace deneme
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+			int deger;
+            string isim = "Berkay";
+            if (isim == "Berkay")
+            {
+                string soyisim = "Ercan";
+                Console.WriteLine($"{isim}");
+            }
+            Console.WriteLine($"{soyisim}");
+            Console.ReadLine();
+        }
+    }
+}
+
+Kod bloğu dışında tanımlanmış değişkene yerel değişken yani neredeyse her yerde ulaşılabilir bir değişken anlamına gelen ifade kullanılır.
+
+" Fakat bi değer atanma olasılığı olacağı için derleyici bu duruma izin vermedi."
+
+KOD BLOKLARI YÖNTEMLERİ, SINIFLARI VE AD ALANLARINI TANIMLAR
+
+
+using System;
+
+namespace MyNewApp // ad alani 
+{
+    class Program // bir sinif
+    {
+        static void Main(string[] args) // bir yontem
+        {
+            Console.WriteLine("Hello World!");
+        }
+    }
+}
+
+Gerçek uygulamalar oluştururken yöntemler yazacak ve bunları sınıflar ve ad alanları halinde düzenleyeceksiniz.
+
+Yöntem adıyla çağrıldığında yöntemin tamamı aşağıdakilerden biri gerçekleşene kadar yürütülür:
+
+-çalışma zamanı 'return' anahtar sözcüğüyle karşılaşır veya
+-çalışma zamanı özel durumla karşılaşır ve devam edemez veya
+-çalışma zamanı yöntemindeki her kod satırını başarıyla yürütür.
+
+Tarayıcı tabanlı .NET düzenleyicisinde yazdığınız kodun tamamı gizli Main() yöntemi içinde yürütülür
+
+Yöntemin adı olan Main(), özeldir. Program yürütürken, .NET Çalışma Zamanı varsayılan olarak program için başlangıç noktası veya giriş noktası olarak kullanılacak Main() adlı bir yöntemi arar.
+
+Sınıf; yöntemler, özellikler, olaylar ve alanlar gibi öğelerin kapsayıcısıdır.
+Mesela bir dizi olusturmak istedigim zaman new anahtar sozcugunu kullanmami gerektiren islem kullandigim sinif sebebi ile gerceklesiyor
+
+Ad alanı; bir ad alanı belirterek derleyiciye hangi sınıf ve yöntemle çalışmak istediğinizi bildirmenizi sağlar.
+
+not: dotnet = .Net
+
+Şimdi uygulamamızın sınıfları için ikinci düzey ad alanları oluşturmak istediğimizi düşünün. Alt ad alanını şöyle ekleyebiliriz:
+
+namespace internetsitesi   //projenin genel ozellikleri bu kisima
+{
+  // Classes here    
+}
+
+namespace internetsitesi.veritabani   // projenin veri ile alakalı kodları ise bu kısma yazılabilir
+{
+  // Classes here    
+}
+
+İstediğimiz kadar ad alanı ekleyebilir ve istediğimiz kadar derin düzey oluşturabiliriz; yalnızca dot(.) işlecini kullanarak alt ad alanı adlarını eklemeye devam edeceğiz.
+
+
+
+Aynı sınıftaki bir yöntemi çağırma
+
+using System;
+
+namespace internetsitesi  //ad alani
+{
+    class Program// sinifimiz
+    {
+        static void Main(string[] args) // yontemimiz
+        {
+            string isim = "Berkay";
+            string cagrilan = cagirma(isim);
+            Console.WriteLine($"{cagrilan}");
+            Console.ReadLine();
+        }
+
+        static string cagirma(string message) 
+        {
+            char[] dizi = message.ToCharArray(); 
+            Array.Reverse(dizi); 
+            return new string(dizi); 
+        }
+
+    }
+}
+
+//ToCharArray bir veriyi karakterlerine ayirip char tipinde tanimlanmis bir diziye aktarir
+//Array.Reverse(dizi); dizi elemanlarimi tersine cevirdi
+//return ile yeniden olkusturulan dizimiz yenilenmis sekilde programa yeniden donderildi
+
+
+Farklı sınıftaki bir yöntemi çağırma
+
+using System;
+
+namespace MyNewApp
+{
+    class Program// sinifimiz
+    {
+        static void Main(string[] args) // yontemimiz
+        {
+            string isim = "Berkay";
+            string cagrilan = program2.cagirma(isim);
+            Console.WriteLine($"{cagrilan}");
+            Console.ReadLine();
+        }
+    }
+
+    class program2
+    {
+        static string cagirma(string message)
+        {
+            char[] dizi = message.ToCharArray();
+            Array.Reverse(dizi);
+            return new string(dizi);
+        }
+    }
+}
+
+Farklı ad alanındaki sınıfa başvurma
+
+using System;
+
+namespace internetsitesi  //ad alani
+{
+    class Program// sinifimiz
+    {
+        static void Main(string[] args) // yontemimiz
+        {
+            string isim = "Berkay";
+            string cagrilan = internetsitesi.tasarim.program2.cagirma(isim);
+            Console.WriteLine($"{cagrilan}");
+            Console.ReadLine();
+        }
+    }
+}
+namespace internetsitesi.tasarim
+{
+    class program2
+    {
+        static string cagirma(string message)
+        {
+            char[] dizi = message.ToCharArray();
+            Array.Reverse(dizi);
+            return new string(dizi);
+        }
+    }
+}
+
+using deyimi, derleyicinin ad alanlarını çözümlemesine yardımcı olur, ancak daha az tuş vuruşuyla;
+
+Bir using deyimi eklemek daha iyi bir seçenek olabilir. deyimi using bir kod dosyasının en üstüne eklenir ve dosyada kullanılan sınıf adlarını çözümler ve derleyiciye tüm sınıf adlarını bulmak için ad alanlarının listesine bakmasını bildirir.
+
+
+using System;
+
+Bu, System.Console.WriteLine() yerine Console.WriteLine() çağrılmayı  mümkün kılar.
+
+
+Bunun kod bloklarıyla ne ilgisi var?
+
+Kod blokları aynı karar ve yineleme deyimlerinin sınırlarını tanımladığı gibi ad alanları, sınıflar ve yöntemler gibi üst düzey yapıların da sınırlarını tanımlar. Bu sınırların dikkate alınması gerekir çünkü bu sınırlar hem değişkenlerin hem de yöntemler ve sınıflar gibi diğer büyük yapıların görünürlüğünü etkiler. Bazı durumlarda başka bir kod bloğunun sınırlarına geçmek için public ve using gibi ek anahtar sözcüklerin kullanılması gerekir. Diğer durumlarda aynı kod bloğu içinde eşdüzeyde tanımlanan yapılar birbirlerine rahatça başvurabilir.
+
+If deyimlerindeki kod bloklarını kaldırma
+
+string isim = "berkay";
+if (isim == "berkay")
+{
+    Console.WriteLine(true);
+}
+Console.ReadLine();
+
+ornek
+
+222
+
+
+
+
+
+
+
+
+
