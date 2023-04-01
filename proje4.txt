@@ -1,0 +1,46 @@
+Hata tespit etme  - proje 4
+
+ÖRNEK: Bir dizi tanımlayın ve bu dizinin değerlerine rastgele sayı tanımlayın
+ardından tanımladığınız sayıların toplamını bulun ve aynı zamanda dizinin son değerine 
+ulaştığınız anı kontrol edin , eğer kontrolünüz geçerliyse sonuncu değeri ekrana yazdırın ve ardından toplam değerinizi ekrana yazdırın 
+
+//Hatali kod
+
+int[] numara = { 4, 8, 15, 16, 23, 42 };
+foreach (int number in numara)
+{
+    int toplam;
+    toplam += number;
+    if (number == 42)
+    {
+       bool kontrol = true;
+    }
+}
+
+if (kontrol) 
+{
+    Console.WriteLine("sonuncu değer 42");
+}
+Console.WriteLine($"toplam: {toplam}");
+
+HATALARIMIZ NE?
+
+-toplam ve kontrol değişkenlerini deyiminin foreach dışına taşımadik
+-Hem hem kontrol de toplam değişkenlerini mantıklı varsayılan değerlerle başlatmadik
+-Kod bloklarını ve ek satır akışlarını if deyimlerinden kaldırmadik
+
+//Hatasiz kod
+
+int[] numara = { 4, 8, 15, 16, 23, 42 };
+int toplam = 0;
+bool kontrol = false;
+
+foreach (int number in numara)
+{
+    toplam += number;
+    if (number == 42) kontrol= true;
+}
+
+if (kontrol) Console.WriteLine("sonuncu deger 42");
+
+Console.WriteLine($"Toplam: {toplam}");
