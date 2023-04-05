@@ -1,0 +1,202 @@
+SWITCH CASE
+
+Switch deyimi nedir?
+switch , eşleştirme ifadesiyle bir desen eşleşmesine göre aday listesinden yürütülecek tek bir switch bölümü seçen bir seçim deyimidir. Switch deyiminin bir veya birden çok switch bölümü vardır. Her switch bölümünde bir veya birden fazla case (durum) etiketi (belirli bir durum veya varsayılan etiket) ve bunu izleyen bir veya birden fazla deyim vardır. Switch deyimi, herhangi bir switch bölümüne yerleştirilmiş tek bir varsayılan etiket içerebilir.
+
+Switch deyiminin en iyi kullanımları:
+
+Birçok olası değerle eşleştirmek istediğiniz tek bir değer var, ancak;
+Belirli bir eşleşme için en fazla birkaç kod satırı yürütmeniz gerekir.
+
+Çalışanın düzeyini temsil eden sayıyı bir unvanla eşleştirmemizi gerektiren bir senaryo düşünelim.Bu dallanma mantığını uygulayan bir switch-case yapı kullanacağız.
+
+int calisanseviyesi = 200;
+string calısanismi = "Ali Temel";
+
+string seviye = "";
+
+switch (calisanseviyesi)
+{
+    case 100:
+        seviye = "Junior";
+        break;
+    case 200:
+        seviye = "Middle";
+        break;
+    case 300:
+        seviye = "Manager";
+        break;
+    case 400:
+        seviye = "Senior";
+        break;
+    default:
+        seviye = "Senior manager";
+        break;
+}
+Console.WriteLine($"{calisanismi}, {seviye}");
+
+Switch anahtar sözcüğü altındaki kod bloğunun amacını tanımlar.
+
+Etiket (case) anahtar sözcüğüyle başlar ve her case de bir koşul belirterek, her case içinde yapmamızı istediğimiz işlemi tanımlarız.
+
+break anahtar sözcüğü ise switch bölümünü sona erdirmenin çeşitli yollarından biridir.(return ifadesi de kullanılabilir.)
+
+İsteğe bağlı olarak default etiketi tanımlanabilir. default değimi herhangi bir case işlemi geçerli olmazsa default ile istedeğimiz işlemi koşulsuz bir şekilde gerçekleştirmemize olanak tanır. default etiketini illa sonda kullanacağız diye bir kaide yoktur. Çıktısı olmasını istediğimiz bir değim varsa bunu deafult ile sağlayabiliriz.
+
+örneğin;
+
+bir seviye çıkışımız hem 100 hem de 200 seviye için tanımlı olmasını istersek ? 
+
+int calisanseviyesi = 100;
+
+    case 100:
+    case 200:
+        seviye = "Middle";
+        break;
+
+çıkış değerimiz middle olacaktır.
+
+
+
+ÖRNEK
+
+Bir üniversite kentinde okulun logosunu ve renklerini taşıyan tişört, eşofman ve diğer hediyelik eşyaların satıldığı bir hediyelik eşya mağazasında çalıştığımızı düşünün. Aylık satış raporu, satılan ürünlerin tam açıklamasının yanı sıra Stok Tutma Birimi'ni (SKU) kullanır. Bizden kodun bazı bölümlerini daha okunabilir olacak şekilde "yeniden" yazmamız istendi. Görevlerden biri SKU'nun switch deyimi kullanılarak açıklamaya dönüştürülmesidir.
+
+
+// SKU = Stok Tutma Birimi
+
+string sku = "01-MN-L";
+
+string[] product = sku.Split('-');  // .Split yöntemi dahil edilen ifadeyi parçalarına 							//ayırır ve bu ayırma işleminde eğer sembol, şekil gibi 						//ifadeler varsa bun ifadeleri ayraç olarak kullanır ve 						//bunlar arasında olan ifadeleri 
+						//sırasıyla dizinine kaydeder
+string type = "";
+string color = "";
+string size = "";
+
+if (product[0] == "01")
+{
+    type = "Sweat shirt";
+}
+else if (product[0] == "02")
+{
+    type = "T-Shirt";
+}
+else if (product[0] == "03")
+{
+    type = "Sweat pants";
+}
+else
+{
+    type = "Other";
+}
+
+if (product[1] == "BL")
+{
+    color = "Black";
+}
+else if (product[1] == "MN")
+{
+    color = "Maroon";
+}
+else
+{
+    color = "White";
+}
+
+if (product[2] == "S")
+{
+    size = "Small";
+}
+else if (product[2] == "M")
+{
+    size = "Medium";
+}
+else if (product[2] == "L")
+{
+    size = "Large";
+}
+else
+{
+    size = "One Size Fits All";
+}
+
+Console.WriteLine($"Product: {size} {color} {type}");
+
+çıkışımız= Product: Large Maroon Sweat shirt
+
+
+
+kodun switch case ile yazımı (bizden istenen hali)
+
+string sku = "01-MN-L";
+
+string[] product = sku.Split('-');
+
+string type = "";
+string color = "";
+string size = "";
+
+switch (product[0])
+{
+    case "01":
+        type = "Sweat shirt";
+        break;
+    case "02":
+        type = "T-Shirt";
+        break;
+    case "03":
+        type = "Sweat pants";
+        break;
+    default:
+        type = "Other";
+        break;
+}
+
+switch (product[1])
+{
+    case "BL":
+        color = "Black";
+        break;
+    case "MN":
+        color = "Maroon";
+        break;
+    default:
+        color = "White";
+        break;
+}
+
+switch (product[2])
+{
+    case "S":
+        size = "Small";
+        break;
+    case "M":
+        size = "Medium";
+        break;
+    case "L":
+        size = "Large";
+        break;
+    default:
+        size = "One Size Fits All";
+        break;
+}
+
+Console.WriteLine($"Product: {size} {color} {type}");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
