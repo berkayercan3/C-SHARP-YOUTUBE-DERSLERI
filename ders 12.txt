@@ -1,0 +1,162 @@
+for ifadesi nedir?
+
+for deyimi, bir kod bloğunu belirli bir sayı kere yeniler. Bu durum, for deyiminin diğer yineleme deyimlerine kıyasla benzersiz olmasını sağlar. foreach deyimi, dizi veya koleksiyon gibi bir veri sırasında yer alan her öğe için kod bloğunu bir kere yineler. while deyimi, bir koşul karşılanana kadar kod bloğunu yeniler.
+
+Ayrıca for deyimi, for yineleme koşullarını kullanıma sunarak yineleme işlemi üzerinde çok daha fazla denetim sağlar.
+
+Adım 1 - Temel bir for deyimi yazma
+
+for (int i = 0; i < 10; i++) // parantez içi her zaman başlatıcı, koşul, yineleyici şeklinde kullanılır
+{
+    Console.WriteLine(i);
+}
+
+çıktımız 
+
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+9 dan başlayıp 0 a kadar yazdırmak isteseydik ? 
+
+for (int i = 9; i >= 0; i--)
+{
+    Console.WriteLine(i);
+}
+
+0 dan başlayıp 3 ün katlarını yazdırmak isteseydik ? 
+
+for (int i = 0; i < 10; i += 3)
+{
+    Console.WriteLine(i);
+}
+
+Döngü deyiminden çıkmak için break anahtar sözcüğünü kullanma
+
+Bir koşulu temel alarak yineleme deyiminden beklenenden önce çıkmak istersek ne yapmamız gerekir? break anahtar sözcüğünü kullanabiliriz.
+
+for (int i = 0; i < 10; i++)
+{
+    Console.WriteLine(i);
+    if (i == 7) break;
+}
+
+buradaki amaç break değimini sadece switch case işlemlerinde kullanmak zorunda olmadığımızı göstermektir.
+
+örnek
+
+bir dizideki isimleri ters bir sıra ile ekrana yazdırmak istesek ?
+
+string[] names = { "Alex", "Eddie", "David", "Michael" };
+
+for (int i = names.Length - 1; i >= 0; i--)
+{
+    Console.WriteLine(names[i]);
+}
+
+
+dizideki bir değeri güncelleştirmek istediğimiz zaman ne yapacağız ?
+
+string[] names = { "Alex", "Eddie", "David", "Michael" };
+foreach (var name in names)
+{
+    if (name == "David") name = "Sammy";
+}
+
+hata alırız
+
+for ile halledelim
+
+string[] names = { "Alex", "Eddie", "David", "Michael" };
+for (int i = 0; i < names.Length; i++)
+    if (names[i] == "David") names[i] = "Sammy";
+
+foreach (var name in names) Console.WriteLine(name);
+
+ÖRNEK  
+
+FizzBuzz
+
+FizzBuzz, popüler bir kodlama sınaması ve mülakat sorusudur.
+
+kurallar;
+
+-1 den 100 e kadar uzanan satır sayılarını değer olarak alın.
+
+-Mevcut değer 3’e bölünebiliyorsa sayının yanındaki Fizz terimini yazdırın.
+
+-Mevcut değer 5’e bölünebiliyorsa sayının yanındaki Buzz terimini yazdırın.
+
+-Mevcut değer hem 3’e hem de 5’e bölünebiliyorsa sayının yanındaki FizzBuzz terimini yazdırın.
+
+örnek çıktı:
+1
+2
+3 - Fizz
+4
+5 - Buzz
+6 - Fizz
+7
+8
+9 - Fizz
+10 - Buzz
+11
+12 - Fizz
+13
+14
+15 - FizzBuzz
+
+Çözüm
+
+for (int i = 1; i < 101; i++)
+{
+    if ((i % 3 == 0) && (i % 5 == 0))
+        Console.WriteLine($"{i} - FizzBuzz");
+    else if (i % 3 == 0)
+        Console.WriteLine($"{i} - Fizz");
+    else if (i % 5 == 0)
+        Console.WriteLine($"{i} - Buzz");
+    else
+        Console.WriteLine($"{i}");
+}
+
+
+for deyimi, kod bloğunda 100 kere yineleme yapmanıza olanak tanıdığı için önemlidir.
+
+if-elseif-else, 3 ve 5 bölenlerini denetlemenize olanak tanır.
+
+%, veya mod işleci, 3 veya 5'in kalan bir sayı olmadan başka bir sayıya bölündüğünü belirlemenizi sağlar.
+
+&& işleci, bir sayinin koşul için hem 3 hem de 5'e bölünebilmesini FizzBuzz sağlar.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
